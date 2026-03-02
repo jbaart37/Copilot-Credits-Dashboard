@@ -44,17 +44,20 @@ This dashboard tracks:
 
 ## Quick Start
 
-See [SETUP_GUIDE.md](SETUP_GUIDE.md) for detailed Power BI setup instructions.
+**Fastest path**: Download [Copilot AI Credits v1.pbit](Copilot%20AI%20Credits%20v1.pbit), open in Power BI Desktop, enter your environment URL(s) when prompted, and you're done.
+
+For detailed instructions or manual setup, see [SETUP_GUIDE.md](SETUP_GUIDE.md).
 
 ## Project Structure
 
 ```
 CP Credits Dash/
-├── README.md                 # This file
-├── SETUP_GUIDE.md           # Power BI connection and setup guide
-├── DAX_CALCULATIONS.md       # DAX formulas and measures
-├── DATA_MODEL.md            # Data model relationships
-└── VISUALS_GUIDE.md         # Recommended visualizations
+├── Copilot AI Credits v1.pbit # Power BI template (start here!)
+├── README.md                  # This file
+├── SETUP_GUIDE.md            # Power BI connection and setup guide
+├── DAX_CALCULATIONS.md        # DAX formulas and measures
+├── DATA_MODEL.md             # Data model relationships
+└── VISUALS_GUIDE.md          # Recommended visualizations
 ```
 
 ## Dashboard Pages
