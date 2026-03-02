@@ -6,14 +6,51 @@
 - Admin or Maker access to your Power Platform environment(s)
 - Environment URL(s) from Power Platform Admin Center
 
-## Step 1: Get Your Environment URL(s)
+## Get Your Environment URL(s)
 
 1. Navigate to [Power Platform Admin Center](https://admin.powerplatform.microsoft.com/)
 2. Select **Environments** > Select your environment > **Details**
 3. Copy the **Environment URL** (e.g., `https://org12345.crm.dynamics.com/`)
 4. Repeat for additional environments if needed
 
-## Step 2: Initial Connection to Dataverse
+---
+
+## Option A: Quick Start with Template (Recommended)
+
+The easiest way to get started is using the included Power BI template file.
+
+### Step 1: Open the Template
+
+1. Download `Copilot AI Credits v1.pbit` from this repository
+2. Double-click to open in Power BI Desktop
+
+### Step 2: Enter Your Environment URLs
+
+When prompted, enter your environment URL(s):
+- **Single environment**: `https://yourorg.crm.dynamics.com/`
+- **Multiple environments**: `https://org1.crm.dynamics.com/,https://org2.crm.dynamics.com/`
+
+> **Important**: Include `https://` at the beginning and `/` at the end of each URL. Separate multiple URLs with commas (no spaces).
+
+### Step 3: Authenticate
+
+1. Sign in with your organizational credentials when prompted
+2. Wait for data to load (may take a few minutes depending on data volume)
+
+### Step 4: Save Your Report
+
+1. Go to **File** → **Save As**
+2. Save as a `.pbix` file for your ongoing use
+
+**That's it!** Your dashboard is ready. The template includes all queries, relationships, calculated columns, measures, and visuals.
+
+---
+
+## Option B: Manual Setup (Build from Scratch)
+
+If you prefer to build the report yourself or want to understand how it works, follow these detailed steps.
+
+### Step 1: Initial Connection to Dataverse
 
 > **Important**: Use the **Common Data Service (Legacy)** connector for the initial connection.
 
@@ -33,7 +70,7 @@
    - `systemuser` - User details for creator/owner mapping
 7. Click **Transform Data** to open Power Query Editor
 
-## Step 3: Create Multi-Environment Parameter
+### Step 2: Create Multi-Environment Parameter
 
 This allows pulling data from one or more environments.
 
@@ -46,7 +83,7 @@ This allows pulling data from one or more environments.
    - **Current Value**: Your URL(s), e.g., `https://org1.crm.dynamics.com/,https://org2.crm.dynamics.com/`
 3. Click **OK**
 
-## Step 4: Create Environment List Query
+### Step 3: Create Environment List Query
 
 1. Right-click in Queries pane → **New Query** → **Blank Query**
 2. Name it `EnvironmentList`
@@ -74,7 +111,7 @@ in
     AddEnvName
 ```
 
-## Step 5: Create Data Retrieval Functions
+### Step 4: Create Data Retrieval Functions
 
 Create these functions to fetch data from each environment:
 
@@ -150,7 +187,7 @@ in
     AddEnvironment
 ```
 
-## Step 6: Create Combined Queries
+### Step 5: Create Combined Queries
 
 Create a combined query for each table that aggregates data from all environments.
 
@@ -254,18 +291,18 @@ in
     Result
 ```
 
-## Step 7: Disable Original Queries (Optional)
+### Step 6: Disable Original Queries (Optional)
 
 If you want to use only the combined queries:
 1. Right-click each original table (msdyn_AIEvent, msdyn_AIModel, etc.)
 2. Select **Enable Load** to uncheck it (disables loading to model)
 3. Keep them for reference or delete if not needed
 
-## Step 8: Close & Apply
+### Step 7: Close & Apply
 
 Click **Close & Apply** to load data into the model.
 
-## Step 9: Create Composite Keys (Required for Multi-Environment)
+### Step 8: Create Composite Keys (Required for Multi-Environment)
 
 When pulling data from multiple environments, the same model/template IDs may exist in different environments. Create composite keys to ensure unique relationships.
 
@@ -288,7 +325,7 @@ When pulling data from multiple environments, the same model/template IDs may ex
 
 Click **Close & Apply** after adding all columns.
 
-## Step 10: Configure Relationships
+### Step 9: Configure Relationships
 
 In Power BI Desktop **Model** view, establish these relationships using composite keys:
 
@@ -312,7 +349,7 @@ In Power BI Desktop **Model** view, establish these relationships using composit
    - Cardinality: One-to-Many (1:*)
    - Cross-filter: Single
 
-## Step 11: Create Date Table
+### Step 10: Create Date Table
 
 In Power BI Desktop (not Power Query), **Modeling** tab → **New table**:
 
@@ -334,7 +371,7 @@ ADDCOLUMNS(
 )
 ```
 
-## Step 12: Add Calculated Columns to AIEvents_Combined
+### Step 11: Add Calculated Columns to AIEvents_Combined
 
 Select **AIEvents_Combined** in Data pane, then **Modeling** → **New column**:
 
@@ -361,7 +398,7 @@ RETURN
     )
 ```
 
-## Step 12: Verify Data Access
+### Step 12: Verify Data Access
 
 After loading data, verify in **Table view**:
 
