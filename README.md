@@ -63,9 +63,27 @@ CP Credits Dash/
 2. **Consumption Analysis** - Matrix by template/month, stacked column by source, decomposition tree
 3. **Cost & Capacity** - Gauge for budget tracking, running total area chart, monthly breakdown
 
+## Credit Currency Transition
+
+As of November 2026, Microsoft is ending AI Builder credits. This dashboard tracks consumption regardless of currency type—the underlying Dataverse tables and event structure remain unchanged.
+
+| Timeline | What's Happening |
+|----------|------------------|
+| **Now - Nov 2026** | Dual-mode: AI Builder credits consumed first, then fallback to Copilot Credits |
+| **Nov 2026** | Seeded AI Builder credits from premium licenses end |
+| **Post Nov 2026** | All consumption uses Copilot Credits; AI Builder add-on credits continue until contract expiration |
+
+**Key Points:**
+- No automatic conversion from AI Builder credits to Copilot Credits
+- The `msdyn_aievents` table continues logging all AI consumption events
+- This dashboard will continue to work — it tracks events and consumption, not the currency type
+
+For full details, see [End of AI Builder credits](https://learn.microsoft.com/en-us/ai-builder/endofaibcredits).
+
 ## References
 
 - [Monitor AI Builder models and prompts activity](https://learn.microsoft.com/ai-builder/activity-monitoring)
 - [AI Builder consumption report](https://learn.microsoft.com/ai-builder/administer-consumption-report)
 - [Manage Copilot Studio credits and capacity](https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity)
 - [Dataverse capacity-based storage details](https://learn.microsoft.com/power-platform/admin/capacity-storage)
+- [End of AI Builder credits](https://learn.microsoft.com/en-us/ai-builder/endofaibcredits)
