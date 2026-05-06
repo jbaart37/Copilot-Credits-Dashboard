@@ -10,6 +10,19 @@ A comprehensive Power BI dashboard for tracking and analyzing Microsoft Copilot 
 - **Cost & Capacity Forecasting** - Track running totals, monthly trends, and projected consumption with gauge visuals
 - **Template-Ready** - Export as .pbit template for easy distribution; users simply enter their environment URLs
 
+## Known Limitations
+
+> **⚠️ Multi-Environment Support: Power BI Desktop Only**
+> 
+> The multi-environment feature (connecting to multiple Dataverse environments via parameters) **only works in Power BI Desktop**. 
+> 
+> **Power BI Service does not support parameterized Dataverse connections** - when published to Power BI Service, the report will only refresh data from a single environment. This is a platform limitation of the Power BI Service data gateway and Dataverse connector.
+> 
+> **Workaround options for Power BI Service:**
+> - Publish separate reports for each environment
+> - Use scheduled refresh in Power BI Desktop and publish the resulting dataset
+> - Use Power BI Dataflows to consolidate data before report consumption
+
 ## Overview
 
 This dashboard tracks:
@@ -44,7 +57,7 @@ This dashboard tracks:
 
 ## Quick Start
 
-**Fastest path**: Download [Copilot AI Credits v1.pbit](Copilot%20AI%20Credits%20v1.pbit), open in Power BI Desktop, enter your environment URL(s) when prompted, and you're done.
+**Fastest path**: Download [Copilot AI Credits v2.pbit](Copilot%20AI%20Credits%20v2.pbit), open in Power BI Desktop, enter your environment URL(s) when prompted, and you're done.
 
 For detailed instructions or manual setup, see [SETUP_GUIDE.md](SETUP_GUIDE.md).
 
@@ -52,7 +65,7 @@ For detailed instructions or manual setup, see [SETUP_GUIDE.md](SETUP_GUIDE.md).
 
 ```
 CP Credits Dash/
-├── Copilot AI Credits v1.pbit # Power BI template (start here!)
+├── Copilot AI Credits v2.pbit # Power BI template (start here!)
 ├── README.md                  # This file
 ├── SETUP_GUIDE.md            # Power BI connection and setup guide
 ├── DAX_CALCULATIONS.md        # DAX formulas and measures
