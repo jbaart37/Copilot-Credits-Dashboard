@@ -7,6 +7,7 @@ A comprehensive Power BI dashboard for tracking and analyzing Microsoft Copilot 
 - **Multi-Environment Support** - Connect to multiple Power Platform environments with a single parameter and aggregate credit consumption across your organization
 - **Copilot Credit Tracking** - Monitor consumption from AI Builder, Copilot Studio Agents (MCS), Power Apps, Power Automate, and API calls
 - **Interactive Analysis** - Drill down by environment, AI model/function, date range, and consumption source using slicers and decomposition trees
+- **LLM Model Tracking** - Filter and analyze consumption by underlying LLM model (OpenAI GPT, Anthropic Claude, etc.)
 - **Cost & Capacity Forecasting** - Track running totals, monthly trends, and projected consumption with gauge visuals
 - **Template-Ready** - Export as .pbit template for easy distribution; users simply enter their environment URLs
 
@@ -49,6 +50,7 @@ This dashboard tracks:
 | Column | Description |
 |--------|-------------|
 | `CopilotCreditConsumption` | Calculated column extracting credits from JSON |
+| `LLMModelName` | Runtime LLM model (e.g., gpt-5-2025-08-07, claude-opus-4-6) extracted from event JSON |
 | `msdyn_eventdata` | JSON containing detailed consumption data |
 | `ProcessingDate` | Converted date for DateTable relationship |
 | `msdyn_consumptionsource_display` | Source (API, MCS, PowerApps, PowerAutomation) |

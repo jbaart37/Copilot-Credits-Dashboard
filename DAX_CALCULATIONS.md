@@ -1,6 +1,30 @@
 # DAX Calculations for Copilot Credits Dashboard
 
-## Calculated Columns
+## Power Query Custom Columns
+
+### LLMModelName (Add to AIEvents_Combined)
+
+Extracts the runtime LLM model name from the `msdyn_eventdata` JSON. This shows the actual model used (e.g., gpt-5-2025-08-07, claude-opus-4-6):
+
+```powerquery
+let
+    json = try Json.Document([msdyn_eventdata]) otherwise null,
+    modelName = try json[llmModelName] otherwise null
+in
+    if modelName <> null then modelName
+    else "Not Specified"
+```
+
+**Steps to add:**
+1. Open Power Query Editor (Home → Transform Data)
+2. Select `AIEvents_Combined`
+3. Add Column → Custom Column
+4. Name: `LLMModelName`, paste formula above
+5. Close & Apply
+
+---
+
+## DAX Calculated Columns
 
 ### 1. Copilot Credit Consumption (Add to AIEvents_Combined)
 
